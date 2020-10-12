@@ -111,7 +111,7 @@ source("scripts/loadPackages.R")
         if (LOC =="Los Angeles-Long Beach-Anaheim, CA" ){axis(4, at = seq(0,500,100)/(.68*pop$pop[pop$cbsa_name==LOC]), labels = seq(0,500,100),las=2)}        
         
         #label the x-axis on the bottom panel only
-        if(LOC == "Los Angeles-Long Beach-Anaheim, CA"){        axis(1, at = c(214,228,245,259), labels = c("Aug 1","Aug 15","Sep 1","Sep 15"))}
+        if(LOC == "Los Angeles-Long Beach-Anaheim, CA "){        axis(1, at = c(214,228,245,259), labels = c("Aug 1","Aug 15","Sep 1","Sep 15"))}
 
         #include total excess pm and total excess deaths as text
         text(y = 325, x = 220, labels = paste("total ug increase = ",round(sum(pm_doy$pm25_diff[pm_doy$cbsa_name==LOC])), sep = ""))
