@@ -66,6 +66,7 @@ source("scripts/loadPackages.R")
       pop <- pop[2:nrow(pop),]
       pop <- pop[,c(2,which(popvars == "Estimate!!Total!!Total population!!SELECTED AGE CATEGORIES!!65 years and over"))]
       pop <- as.data.frame(pop) %>% rename(pop = S0101_C01_030E) %>% rename(cbsa_name = NAME)
+      #note: CBSA's don't line up perfectly with the ones EPA uses so population and PM regions are imperfect matches.
       pop$cbsa_name <- sort(c("Seattle-Tacoma-Bellevue, WA","Portland-Vancouver-Hillsboro, OR-WA","Sacramento--Roseville--Arden-Arcade, CA","San Francisco-Oakland-Hayward, CA","Los Angeles-Long Beach-Anaheim, CA"))
       pop$pop <- as.numeric(pop$pop)
       pop$pop <- pop$pop/1e6 #convert to millions of people since rates per million
