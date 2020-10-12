@@ -84,7 +84,7 @@ source("scripts/loadPackages.R")
       
       
       ########################### Plot #########################################################
-      pdf(file = "figures/raw/fig1-raw.pdf", width = 10, height = 12)                        
+      pdf(file = "figures/raw/fig2-raw.pdf", width = 10, height = 12)                        
       
       par(mfrow = c(5,1))
       par(mar = c(1,4,2,4))
