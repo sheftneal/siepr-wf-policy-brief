@@ -1,0 +1,23 @@
+Panel a Burned Area: 
+
+National Interagency Coordination Center (NICC), Wildland fire statistics (2019): https://www.nifc.gov/fireInfo/fireInfo_statistics.html
+
+
+
+
+Panel b Smoke days per year: 
+
+NOAA Hazard Mapping System Fire and Smoke Product: https://www.ospo.noaa.gov/Products/land/hms.html
+
+
+
+
+Panel c PM2.5: 
+
+EPA: https://www.epa.gov/air-trends/particulate-matter-pm25-trends
+
+
+
+Panel d predicted % of PM2.5 from wildfire smoke: 
+
+Marshall Burke, Anne Driscoll, Jenny Xue, Sam Heft-Neal, Jennifer Burney, and Michael Wara. “The changing risk and burden of wildfire in the US”, NBER Working Paper 27423, 2020. http://www.nber.org/papers/w27423
