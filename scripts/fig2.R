@@ -17,15 +17,15 @@ source("scripts/loadPackages.R")
     #not positive every state has same format so load and check separately [update: all formated same]
     
       #CA    
-      for (y in 1:length(yr)){  pmca[[y]] <- read_csv(paste("data/fig2/CApm",yr[y],".csv",sep=""))  }
+      for (y in 1:length(yr)){  pmca[[y]] <- read_csv(paste("data/fig2/inputs/CApm",yr[y],".csv",sep=""))  }
       pmca <- data.frame(data.table::rbindlist(pmca))
 
       #WA    
-      for (y in 1:length(yr)){  pmwa[[y]] <- read_csv(paste("data/fig2/WApm",yr[y],".csv",sep=""))  }
+      for (y in 1:length(yr)){  pmwa[[y]] <- read_csv(paste("data/fig2/inputs/WApm",yr[y],".csv",sep=""))  }
       pmwa <- data.frame(data.table::rbindlist(pmwa))
 
       #OR    
-      for (y in 1:length(yr)){  pmor[[y]] <- read_csv(paste("data/fig2/ORpm",yr[y],".csv",sep=""))  }
+      for (y in 1:length(yr)){  pmor[[y]] <- read_csv(paste("data/fig2/inputs/ORpm",yr[y],".csv",sep=""))  }
       pmor <- data.frame(data.table::rbindlist(pmor))
       
       #double check all files are formatted the same:
@@ -61,7 +61,7 @@ source("scripts/loadPackages.R")
       
       
       #pull out pop by age for each CBSA
-      pop <- read_csv("data/fig2/ACSST1Y2019.S0101_cbsa_pop_by_age_group.csv")
+      pop <- read_csv("data/fig2/inputs/ACSST1Y2019.S0101_cbsa_pop_by_age_group.csv")
       popvars <- pop[1,]
       pop <- pop[2:nrow(pop),]
       pop <- pop[,c(2,which(popvars == "Estimate!!Total!!Total population!!SELECTED AGE CATEGORIES!!65 years and over"))]
@@ -77,8 +77,7 @@ source("scripts/loadPackages.R")
       
       
       #write out data for plotting
-      write_rds(pm_doy, path = "data/fig2/fig2-plot-data-clean.rds")
-      write_csv(pm_doy, path = "data/fig2/fig2-plot-data-clean.csv")
+      write_csv(pm_doy, path = "data/fig2/clean_fig_data/fig2-pm-excess-mortality-clean.csv")
       
       
       
