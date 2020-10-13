@@ -1,0 +1,17 @@
+data sources:
+
+PM2.5:
+
+https://www.epa.gov/outdoor-air-quality-data/download-daily-data
+
+All files were labeled [State]pm[year].csv
+
+
+
+
+Estimated relationship between PM2.5 and mortality used for the excess mortality calculations comes from Deryugina et al 2019. “The mortality and medical costs of air pollution: Evidence from changes in wind direction”. American Economic Review, 2019: https://secureservercdn.net/166.62.111.84/0zv.ccf.myftpupload.com/wp-content/uploads/2020/01/2019-AER-Costs-of-Air-Pollution.pdf
+
+
+
+
+Population data used for the excess mortality calculations come from the American Community Survey: https://www.census.gov/programs-surveys/acs/data.html
