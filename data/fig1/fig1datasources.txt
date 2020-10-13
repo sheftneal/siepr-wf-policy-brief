@@ -1,23 +1,39 @@
 Panel a Burned Area: 
 
-National Interagency Coordination Center (NICC), Wildland fire statistics (2019): https://www.nifc.gov/fireInfo/fireInfo_statistics.html
+	National
+	
+	Data source for national burned area 1980s - 2019: https://www.nifc.gov/fireInfo/fireInfo_stats_totalFires.html
+      	Data source for updating to 2020: https://www.nifc.gov/fireInfo/nfn.htm 
+      	historical data suggest about 85% of year-end burned area occurs by 9/15
+        
+   
+	California
 
-
+	Data source for california burned area 1980s - 2018: https://www.fire.ca.gov/media/11397/fires-acres-all-agencies-thru-2018.pdf
+	Data source for updating 2019 and 2020: https://www.fire.ca.gov/incidents/2019/  and https://www.fire.ca.gov/incidents/2020/
+        
 
 
 Panel b Smoke days per year: 
-
-NOAA Hazard Mapping System Fire and Smoke Product: https://www.ospo.noaa.gov/Products/land/hms.html
-
-
+ 
+	Data source: https://www.ospo.noaa.gov/Products/land/hms.html
+        
+	For details on how smoke polygons were aggregated to pop weighted EPA region averages, see Supplement from our NBER paper: 
+	https://www.nber.org/papers/w27423?utm_campaign=ntwh&utm_medium=email&utm_source=ntwg25 
+        2020 values were calculated through 9/15 and then scaled up according to % of smoke days historically by 9/15 by region
+    
 
 
 Panel c PM2.5: 
 
-EPA: https://www.epa.gov/air-trends/particulate-matter-pm25-trends
-
-
+	Data source: https://www.epa.gov/air-trends/particulate-matter-pm25-trends
+    	
+	State level data for 2020 through 9/15 source: https://www.epa.gov/outdoor-air-quality-data/download-daily-data
+    	2020 state level averages were calculated and merged with EPA regions to match the trends data. 
+    	Historically 9/15 PM2.5 averages 95% of year-end totals so 2020 values scaled accordingly
+  
 
 Panel d predicted % of PM2.5 from wildfire smoke: 
 
-Marshall Burke, Anne Driscoll, Jenny Xue, Sam Heft-Neal, Jennifer Burney, and Michael Wara. “The changing risk and burden of wildfire in the US”, NBER Working Paper 27423, 2020. http://www.nber.org/papers/w27423
+	Marshall Burke, Anne Driscoll, Jenny Xue, Sam Heft-Neal, Jennifer Burney, and Michael Wara. 
+	“The changing risk and burden of wildfire in the US”, NBER Working Paper 27423, 2020. http://www.nber.org/papers/w27423
