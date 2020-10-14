@@ -9,7 +9,7 @@ source("scripts/loadPackages.R")
 
   #calculate share of wildfire burned area by jurisdiction
             
-      baj_wf_share <- read_csv("data/fig3/wildfire_burned_area_by_jurisdiction.csv")  %>% 
+      baj_wf_share <- read_csv("data/fig3/inputs/wildfire_burned_area_by_jurisdiction.csv")  %>% 
                       dplyr::select(-year) %>% 
                       summarise_all(mean) %>% 
                       mutate(wf_total = wf_bia + wf_blm + wf_fs + wf_fws + wf_nps + wf_state,
@@ -23,7 +23,7 @@ source("scripts/loadPackages.R")
                       dplyr::select(starts_with("share")) %>% 
                       sort(decreasing = T)
       
-      baj_wf_total <- read_csv("data/fig3/wildfire_burned_area_by_jurisdiction.csv")  %>% 
+      baj_wf_total <- read_csv("data/fig3/inputs/wildfire_burned_area_by_jurisdiction.csv")  %>% 
                       dplyr::select(-year) %>% 
                       summarise_all(mean) %>% 
                       unlist() %>% sum()
@@ -34,7 +34,7 @@ source("scripts/loadPackages.R")
       
   #calculate share of prescribed burned area by jurisdiction
     
-      baj_rx_share <- read_csv("data/fig3/prescribed_burned_area_by_jurisdiction.csv")  %>% 
+      baj_rx_share <- read_csv("data/fig3/inputs/prescribed_burned_area_by_jurisdiction.csv")  %>% 
                       dplyr::select(-year) %>% 
                       summarise_all(mean) %>% 
                       mutate(rx_total = rx_bia + rx_blm + rx_fs + rx_fws + rx_nps + rx_state,
@@ -48,7 +48,7 @@ source("scripts/loadPackages.R")
                       dplyr::select(starts_with("share")) %>% 
                       sort(decreasing = T)
       
-      baj_rx_total <- read_csv("data/fig3/prescribed_burned_area_by_jurisdiction.csv")  %>% 
+      baj_rx_total <- read_csv("data/fig3/inputs/prescribed_burned_area_by_jurisdiction.csv")  %>% 
                       dplyr::select(-year) %>% 
                       summarise_all(mean) %>% 
                       unlist() %>% sum()      
@@ -58,7 +58,7 @@ source("scripts/loadPackages.R")
   
   #calculate share of prescribed burned area by region
       
-      barg_wf_share <-  read_csv("data/fig3/wildfire_burned_area_by_region.csv")  %>% 
+      barg_wf_share <-  read_csv("data/fig3/inputs/wildfire_burned_area_by_region.csv")  %>% 
                         mutate(wf = (ave_2010_2019 + ave_2000_2009 + ave_1990_1999)/3) %>%
                         dplyr::select(region, wf) 
       wf_total <- sum(barg_wf_share$wf)
@@ -66,7 +66,7 @@ source("scripts/loadPackages.R")
                         mutate(wf_share = wf/wf_total) %>% 
                         dplyr::select(-wf) %>% 
                         arrange(-wf_share)
-      barg_wf_total <- read_csv("data/fig3/wildfire_burned_area_by_region.csv")  %>% 
+      barg_wf_total <- read_csv("data/fig3/inputs/wildfire_burned_area_by_region.csv")  %>% 
                         mutate(wf = (ave_2010_2019 + ave_2000_2009 + ave_1990_1999)/3) %>% 
                         dplyr::select(wf) %>% sum()
       
@@ -74,7 +74,7 @@ source("scripts/loadPackages.R")
       
     #calculate share of prescribed burned area by region
       
-      barg_rx_share <-  read_csv("data/fig3/prescribed_burned_area_by_region.csv")  %>% 
+      barg_rx_share <-  read_csv("data/fig3/inputs/prescribed_burned_area_by_region.csv")  %>% 
                         mutate(rx = (ave_2010_2019 + ave_2000_2009 + ave_1990_1999)/3) %>%
                         dplyr::select(region, rx) 
       rx_total <- sum(barg_rx_share$rx)
@@ -83,7 +83,7 @@ source("scripts/loadPackages.R")
                         dplyr::select(-rx) %>% 
                         arrange(-rx_share)
       
-      barg_rx_total <- read_csv("data/fig3/prescribed_burned_area_by_region.csv")  %>% 
+      barg_rx_total <- read_csv("data/fig3/inputs/prescribed_burned_area_by_region.csv")  %>% 
                        mutate(rx = (ave_2010_2019 + ave_2000_2009 + ave_1990_1999)/3) %>% 
                        dplyr::select(rx) %>% sum()
             
@@ -92,7 +92,7 @@ source("scripts/loadPackages.R")
       
     #read in the shapefile of GACC regions and assign colors for the bottom panel legend
       
-      gacc <- rgdal::readOGR("data/fig3/National-GACC-Boundaries/National_GACC_Current_20200226.shp")
+      gacc <- rgdal::readOGR("data/fig3/inputs/National-GACC-Boundaries/National_GACC_Current_20200226.shp")
         gacc@data$group <- c("AK","EA","GB","NO","NR","NW","RM","SA","SO","SW")
         gacc@data$plotOrder <- 1:nrow(gacc@data)
         gacc@data <- left_join(gacc@data, col_bottom_right) %>% arrange(plotOrder)
@@ -177,3 +177,19 @@ source("scripts/loadPackages.R")
         plot(gacc, col = gacc@data$col, xlim = c(-160,-50), ylim = c(10,70), lwd = 0.5, border = 'white')
         text(x = coordinates(gacc)[,1], y = coordinates(gacc)[,2], labels = gacc@data$group, col = 'white', cex=0.5)
       dev.off()
+      
+
+#################################################
+#################################################
+
+  #write out the plot data   
+      
+      topleft <- data.frame(jurisdiction = unlist(lapply(strsplit(names(baj_wf_share),"_"),function(x){x[2]})),wf_share = as.numeric(baj_wf_share) )
+      topright <- data.frame(jurisdiction = unlist(lapply(strsplit(names(baj_rx_share),"_"),function(x){x[2]})),rx_share = as.numeric(baj_rx_share) )
+      top <- left_join(topleft, topright)
+
+      bottom <- left_join(barg_wf_share, barg_rx_share)
+      
+      write_csv(top, path = "data/fig3/clean_fig_data/burned_area_by_jurisdiction.csv")
+      write_csv(bottom, path = "data/fig3/clean_fig_data/burned_area_by_region.csv")
+            
