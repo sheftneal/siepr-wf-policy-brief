@@ -36,9 +36,7 @@ doughnut <-
     else par("fg")
     col <- rep(col, length.out = nx)
     border <- rep(border, length.out = nx)
-    lty <- rep(lty, length.out = nx)
     angle <- rep(angle, length.out = nx)
-    density <- rep(density, length.out = nx)
     twopi <- if (clockwise)
       -2 * pi
     else 2 * pi
