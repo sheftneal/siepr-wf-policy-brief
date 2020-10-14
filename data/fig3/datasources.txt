@@ -1,0 +1,15 @@
+burned_area_by_jurisdiction.csv: https://www.nifc.gov/fireInfo/fireInfo_statistics.html 
+
+	annual data come from annual Wildland Fire Summaries (source NICC)
+	
+
+burned_area_by_region.csv: https://www.nifc.gov/fireInfo/fireInfo_statistics.html 
+
+	ave_2010_2019 column comes from 10-yr ave reported in 2019 wildfire statistics
+
+	ave_2000_2009 column comes from 10-yr ave reported in 2009 wildfire statistics
+
+	ave_1990_2000 column comes from 10-yr ave reported in 2000 wildfire statistics
+
+
+
